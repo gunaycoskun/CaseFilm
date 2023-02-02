@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "d535ca2f-7232-41f2-97aa-4ba6636d1e99",
+		"name": "MovieAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19774438"
+	},
+	"item": [
+		{
+			"name": "Yeni film ekleme",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "director",
+							"value": "James McTeigue",
+							"type": "text"
+						},
+						{
+							"key": "poster",
+							"type": "file",
+							"src": "/C:/Users/gunay/Downloads/v-for-vendetta-poster.jpeg"
+						},
+						{
+							"key": "name",
+							"value": "V For Vendetta",
+							"type": "text"
+						},
+						{
+							"key": "Year",
+							"value": "2006",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Film",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Film"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tüm filmlerin listelenmesi",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Film",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Film"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ID'si verilen bir filmin getirilmesi (aktör listesiyle beraber)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"14d84003-7bde-4008-aad0-0f677b2b379f\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Film/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Film",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " Bir filme yorum eklenmesi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filmId\": \"14d84003-7bde-4008-aad0-0f677b2b379f\",\r\n  \"commenterName\": \"Günay Coşkun\",\r\n  \"contents\": \"Harika bir film!\",\r\n  \"createdDate\": \"2023-01-16T18:36:04.381Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Comment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " Bir filme aktörlerin eklenmesi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Value[0].Picture",
+							"type": "file",
+							"src": "/C:/Users/gunay/Downloads/Stephen Fry.jpg"
+						},
+						{
+							"key": "Value[0].BornDate",
+							"value": "1957-08-24T18:36:04.381Z",
+							"type": "text"
+						},
+						{
+							"key": "Value[0].NameSurname",
+							"value": "Stephen Fry",
+							"type": "text"
+						},
+						{
+							"key": "Value[1].Picture",
+							"type": "file",
+							"src": "/C:/Users/gunay/Downloads/Natalie Portman.jpg"
+						},
+						{
+							"key": "Value[1].BornDate",
+							"value": "1981-06-09T00:00:00.381Z",
+							"type": "text"
+						},
+						{
+							"key": "Value[1].NameSurname",
+							"value": "Natalie Portman",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Actor/?FilmId=14d84003-7bde-4008-aad0-0f677b2b379f",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Actor",
+						""
+					],
+					"query": [
+						{
+							"key": "FilmId",
+							"value": "14d84003-7bde-4008-aad0-0f677b2b379f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bir filme yapılmış tüm yorumların listelenmesi",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filmId\": \"14d84003-7bde-4008-aad0-0f677b2b379f\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Comment/GetComments",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Comment",
+						"GetComments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filmden bağımsız tüm aktörlerin listelenmesi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7223/api/Actor",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Actor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ID’si verilen bir aktörün oynadığı tüm filmlerin listelenmesi",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\": \"ecd77fc0-f585-4442-bde1-83ff997a7519\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7223/api/Actor/GetActorFilms",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7223",
+					"path": [
+						"api",
+						"Actor",
+						"GetActorFilms"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
